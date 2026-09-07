@@ -46,7 +46,7 @@ StudySpace is a conceptual student productivity and academic resource website cr
 
 ## Live Website
 
-https://htmlpreview.github.io/?https://github.com/rangakartik21-star/cla-retake-web-project/blob/main/index.html
+https://html-preview.github.io/?url=https://github.com/rangakartik21-star/cla-retake-web-project/blob/main/index.html
 
 ## Source Code Repository
 
