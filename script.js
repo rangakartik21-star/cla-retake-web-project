@@ -1,35 +1,66 @@
-const menuButton = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-const goalForm = document.getElementById('goalForm');
-const goalInput = document.getElementById('goal');
-const formMessage = document.getElementById('formMessage');
-const year = document.getElementById('year');
-
-year.textContent = new Date().getFullYear();
-
-menuButton.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', String(isOpen));
-});
-
-navLinks.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
-  });
-});
-
-goalForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-
-  const goal = goalInput.value.trim();
-
-  if (goal.length < 3) {
-    formMessage.textContent = 'Please enter a study goal of at least 3 characters.';
-    goalInput.focus();
-    return;
-  }
-
-  formMessage.textContent = `Goal saved: “${goal}”`;
-  goalForm.reset();
-});
+const stocks = [
+{ symbol: "RELIANCE", name: "Reliance Industries", sector: "Energy", price: 1418.60, change: 1.21, open: 1401.30, high: 1426.90, low: 1396.25, volume: 8.42, pe: 27.8, cap: 19.2, seed: 11 },
+{ symbol: "TCS", name: "Tata Consultancy Services", sector: "Technology", price: 3184.40, change: -0.42, open: 3205.00, high: 3222.70, low: 3168.15, volume: 2.18, pe: 25.6, cap: 11.5, seed: 22 },
+{ symbol: "HDFCBANK", name: "HDFC Bank", sector: "Banking", price: 972.25, change: 0.83, open: 964.10, high: 978.40, low: 960.20, volume: 13.67, pe: 19.4, cap: 7.5, seed: 33 },
+{ symbol: "INFY", name: "Infosys", sector: "Technology", price: 1476.90, change: 2.17, open: 1448.35, high: 1489.20, low: 1443.60, volume: 6.21, pe: 22.9, cap: 6.1, seed: 44 },
+{ symbol: "ICICIBANK", name: "ICICI Bank", sector: "Banking", price: 1391.30, change: 1.54, open: 1371.10, high: 1399.80, low: 1367.65, volume: 9.83, pe: 18.2, cap: 9.9, seed: 55 },
+{ symbol: "SBIN", name: "State Bank of India", sector: "Banking", price: 812.45, change: -1.08, open: 821.20, high: 825.10, low: 806.75, volume: 16.44, pe: 10.7, cap: 7.3, seed: 66 },
+{ symbol: "BHARTIARTL", name: "Bharti Airtel", sector: "Telecom", price: 1928.80, change: 1.89, open: 1894.20, high: 1942.15, low: 1889.70, volume: 4.64, pe: 31.5, cap: 11.7, seed: 77 },
+{ symbol: "ITC", name: "ITC Limited", sector: "Consumer", price: 417.35, change: -0.31, open: 419.40, high: 421.10, low: 415.25, volume: 11.28, pe: 24.1, cap: 5.2, seed: 88 },
+{ symbol: "LT", name: "Larsen & Toubro", sector: "Industrials", price: 3567.20, change: 0.68, open: 3544.50, high: 3586.80, low: 3528.15, volume: 1.73, pe: 29.6, cap: 4.9, seed: 99 },
+{ symbol: "MARUTI", name: "Maruti Suzuki India", sector: "Automobile", price: 12642.00, change: 2.61, open: 12348.00, high: 12702.00, low: 12311.00, volume: 0.78, pe: 28.4, cap: 4.0, seed: 101 },
+{ symbol: "SUNPHARMA", name: "Sun Pharmaceutical", sector: "Healthcare", price: 1688.55, change: -1.44, open: 1712.10, high: 1719.50, low: 1677.80, volume: 2.97, pe: 35.2, cap: 4.1, seed: 112 },
+{ symbol: "TITAN", name: "Titan Company", sector: "Consumer", price: 3648.70, change: 3.08, open: 3550.20, high: 3674.00, low: 3538.60, volume: 1.61, pe: 74.6, cap: 3.2, seed: 123 }
+];
+const indices = { nifty: { value: 24842.10, change: 0.74 }, sensex: { value: 81436.18, change: 0.61 }, bank: { value: 54118.35, change: -0.18 } };
+const state = { selected: "RELIANCE", range: "1M", moverMode: "gainers", watchlist: JSON.parse(localStorage.getItem("marketpulse-watchlist") || '["RELIANCE","INFY","HDFCBANK"]'), holdings: JSON.parse(localStorage.getItem("marketpulse-holdings") || "[]"), theme: localStorage.getItem("marketpulse-theme") || "dark" };
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
+const inr = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 2 });
+const compactINR = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", notation: "compact", maximumFractionDigits: 2 });
+function stockBySymbol(symbol) { return stocks.find(s => s.symbol === symbol); }
+function signed(value, digits = 2) { return `${value >= 0 ? "+" : ""}${value.toFixed(digits)}`; }
+function classFor(value) { return value >= 0 ? "positive" : "negative"; }
+function prevClose(stock) { return stock.price / (1 + stock.change / 100); }
+function rupeeDelta(stock) { return stock.price - prevClose(stock); }
+function pseudoRandom(seed) { let x = Math.sin(seed) * 10000; return x - Math.floor(x); }
+function makeSeries(stock, range) { const points = { "1D": 26, "1W": 28, "1M": 34, "3M": 44 }[range]; const volatility = { "1D": 0.006, "1W": 0.018, "1M": 0.045, "3M": 0.09 }[range]; const target = stock.price; const start = target * (1 - stock.change / 100 * ({ "1D": 1, "1W": 2, "1M": 4, "3M": 7 }[range]) - volatility * 0.25); const values = []; let current = start; for (let i = 0; i < points - 1; i++) { const progress = i / (points - 1); const driftTarget = start + (target - start) * progress; const noise = (pseudoRandom(stock.seed * 17 + i * 13 + range.length * 7) - 0.5) * target * volatility * 0.15; current += (driftTarget - current) * 0.38 + noise; values.push(Math.max(current, target * 0.6)); } values.push(target); return values; }
+function applyTheme() { document.body.classList.toggle("light", state.theme === "light"); $("#themeIcon").textContent = state.theme === "light" ? "☀" : "☾"; $("#themeLabel").textContent = state.theme === "light" ? "Dark mode" : "Light mode"; drawChart(); }
+function renderSelected() { const s = stockBySymbol(state.selected); if (!s) return; $("#stockLogo").textContent = s.symbol.slice(0, 1); $("#selectedName").textContent = s.name; $("#selectedSymbol").textContent = s.symbol; $("#selectedSector").textContent = `${s.sector} · NSE`; $("#selectedPrice").textContent = inr.format(s.price); const delta = rupeeDelta(s); const change = $("#selectedChange"); change.textContent = `${delta >= 0 ? "+" : "-"}${inr.format(Math.abs(delta))} (${signed(s.change)}%)`; change.className = `price-change ${classFor(s.change)}`; $("#metricOpen").textContent = inr.format(s.open); $("#metricHigh").textContent = inr.format(s.high); $("#metricLow").textContent = inr.format(s.low); $("#metricVolume").textContent = `${s.volume.toFixed(2)}M`; $("#metricPE").textContent = s.pe.toFixed(1); $("#metricCap").textContent = `₹${s.cap.toFixed(1)}T`; updateWatchButton(); drawChart(); }
+function updateWatchButton() { const watched = state.watchlist.includes(state.selected); const btn = $("#watchButton"); btn.classList.toggle("active", watched); btn.textContent = watched ? "★ Watching" : "☆ Add to watchlist"; }
+function selectStock(symbol) { state.selected = symbol; renderSelected(); $("#stockSearch").value = ""; $("#searchResults").classList.remove("open"); window.scrollTo({ top: 0, behavior: "smooth" }); }
+function renderSearch(query = "") { const box = $("#searchResults"); const q = query.trim().toLowerCase(); if (!q) { box.classList.remove("open"); box.innerHTML = ""; return; } const matches = stocks.filter(s => s.symbol.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)).slice(0, 7); box.innerHTML = matches.length ? matches.map(s => `<button class="search-item" type="button" data-symbol="${s.symbol}" role="option"><span><strong>${s.symbol}</strong><br><small>${s.name}</small></span><span>${inr.format(s.price)}</span></button>`).join("") : `<div class="empty-state">No stock found.</div>`; box.classList.add("open"); }
+function renderMovers() { const sorted = [...stocks].sort((a, b) => state.moverMode === "gainers" ? b.change - a.change : a.change - b.change).slice(0, 6); $("#moversList").innerHTML = sorted.map(s => `<button class="mover-row" type="button" data-symbol="${s.symbol}"><span class="ticker-pair"><span class="mini-logo">${s.symbol[0]}</span><span><strong>${s.symbol}</strong><small>${s.name}</small></span></span><span class="quote-pair"><strong>${inr.format(s.price)}</strong><span class="${classFor(s.change)}">${signed(s.change)}%</span></span></button>`).join(""); }
+function saveWatchlist() { localStorage.setItem("marketpulse-watchlist", JSON.stringify(state.watchlist)); }
+function toggleWatch(symbol) { if (state.watchlist.includes(symbol)) state.watchlist = state.watchlist.filter(s => s !== symbol); else state.watchlist.unshift(symbol); saveWatchlist(); updateWatchButton(); renderWatchlist(); renderMarketTable(); }
+function renderWatchlist() { const body = $("#watchlistBody"); $("#watchCount").textContent = `${state.watchlist.length} ${state.watchlist.length === 1 ? "stock" : "stocks"}`; if (!state.watchlist.length) { body.innerHTML = `<div class="empty-state">Your watchlist is empty.<br>Use the star button on any stock to add one.</div>`; return; } body.innerHTML = state.watchlist.map(symbol => stockBySymbol(symbol)).filter(Boolean).map(s => `<div class="watch-row"><button class="ticker-pair select-watch" type="button" data-symbol="${s.symbol}"><span class="mini-logo">${s.symbol[0]}</span><span><strong>${s.symbol}</strong><small>${s.name}</small></span></button><span class="quote-pair"><strong>${inr.format(s.price)}</strong><span class="${classFor(s.change)}">${signed(s.change)}%</span></span><button class="remove-watch" type="button" data-remove="${s.symbol}" aria-label="Remove ${s.symbol} from watchlist">×</button></div>`).join(""); }
+function initPortfolioForm() { $("#holdingSymbol").innerHTML = stocks.map(s => `<option value="${s.symbol}">${s.symbol}</option>`).join(""); $("#holdingCost").value = stockBySymbol($("#holdingSymbol").value).price.toFixed(2); }
+function saveHoldings() { localStorage.setItem("marketpulse-holdings", JSON.stringify(state.holdings)); }
+function renderPortfolio() { const list = $("#holdingsList"); let invested = 0, value = 0; const rows = state.holdings.map((h, index) => { const s = stockBySymbol(h.symbol); if (!s) return ""; const cost = h.qty * h.cost; const current = h.qty * s.price; const pnl = current - cost; invested += cost; value += current; return `<div class="holding-row"><span><strong>${h.symbol}</strong><small>${h.qty} shares · Avg ${inr.format(h.cost)}</small></span><span class="holding-value"><strong>${inr.format(current)}</strong><small>Current value</small></span><span class="holding-pnl ${classFor(pnl)}"><strong>${pnl >= 0 ? "+" : "-"}${inr.format(Math.abs(pnl))}</strong><small>${signed((pnl / cost) * 100)}%</small></span><button type="button" data-holding-remove="${index}" aria-label="Remove holding">×</button></div>`; }); list.innerHTML = rows.join("") || `<div class="empty-state">No paper holdings yet. Add one above to calculate a virtual P&amp;L.</div>`; const pnl = value - invested; $("#portfolioValue").textContent = compactINR.format(value); $("#portfolioInvested").textContent = compactINR.format(invested); const pnlEl = $("#portfolioPnl"); pnlEl.textContent = `${pnl >= 0 ? "+" : "-"}${compactINR.format(Math.abs(pnl))}`; pnlEl.className = classFor(pnl); }
+function initFilters() { const sectors = [...new Set(stocks.map(s => s.sector))].sort(); $("#sectorFilter").innerHTML += sectors.map(s => `<option value="${s}">${s}</option>`).join(""); }
+function renderMarketTable() { const sector = $("#sectorFilter").value; const sort = $("#sortSelect").value; let list = stocks.filter(s => sector === "All" || s.sector === sector); list = [...list].sort((a, b) => { if (sort === "gainers") return b.change - a.change; if (sort === "losers") return a.change - b.change; if (sort === "price") return b.price - a.price; return b.cap - a.cap; }); $("#marketTableBody").innerHTML = list.map(s => `<tr><td><button class="table-company table-select" type="button" data-symbol="${s.symbol}"><span class="mini-logo">${s.symbol[0]}</span><span><strong>${s.symbol}</strong><small>${s.name}</small></span></button></td><td><strong>${inr.format(s.price)}</strong></td><td class="${classFor(s.change)}"><strong>${signed(s.change)}%</strong></td><td>${s.volume.toFixed(2)}M</td><td>${s.pe.toFixed(1)}</td><td>₹${s.cap.toFixed(1)}T</td><td><button class="table-action" type="button" data-watch-table="${s.symbol}">${state.watchlist.includes(s.symbol) ? "★" : "☆"}</button></td></tr>`).join(""); }
+function drawChart() { const canvas = $("#priceChart"); if (!canvas) return; const parent = canvas.parentElement; const rect = parent.getBoundingClientRect(); const dpr = window.devicePixelRatio || 1; canvas.width = Math.max(1, Math.floor(rect.width * dpr)); canvas.height = Math.max(1, Math.floor(rect.height * dpr)); canvas.style.width = `${rect.width}px`; canvas.style.height = `${rect.height}px`; const ctx = canvas.getContext("2d"); ctx.scale(dpr, dpr); const w = rect.width, h = rect.height; ctx.clearRect(0, 0, w, h); const s = stockBySymbol(state.selected); const data = makeSeries(s, state.range); canvas._series = data; const pad = { l: 8, r: 52, t: 18, b: 24 }; const min = Math.min(...data), max = Math.max(...data); const spread = max - min || 1; const low = min - spread * .12, high = max + spread * .12; const x = i => pad.l + (i / (data.length - 1)) * (w - pad.l - pad.r); const y = v => pad.t + (1 - (v - low) / (high - low)) * (h - pad.t - pad.b); canvas._coords = { x, y, pad, low, high, w, h }; const styles = getComputedStyle(document.body); const grid = styles.getPropertyValue("--border").trim(); const text = styles.getPropertyValue("--muted").trim(); const line = s.change >= 0 ? styles.getPropertyValue("--positive").trim() : styles.getPropertyValue("--negative").trim(); ctx.font = "10px Inter, sans-serif"; ctx.textAlign = "left"; ctx.textBaseline = "middle"; for (let i = 0; i < 4; i++) { const yy = pad.t + i * (h - pad.t - pad.b) / 3; ctx.strokeStyle = grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke(); const labelValue = high - i * (high - low) / 3; ctx.fillStyle = text; ctx.fillText(`₹${labelValue.toFixed(labelValue > 1000 ? 0 : 1)}`, w - pad.r + 8, yy); } ctx.beginPath(); data.forEach((v, i) => { const xx = x(i), yy = y(v); if (i === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy); }); ctx.strokeStyle = line; ctx.lineWidth = 2.2; ctx.lineJoin = "round"; ctx.lineCap = "round"; ctx.stroke(); const gradient = ctx.createLinearGradient(0, pad.t, 0, h - pad.b); gradient.addColorStop(0, s.change >= 0 ? "rgba(45,212,167,.22)" : "rgba(255,102,128,.22)"); gradient.addColorStop(1, "rgba(0,0,0,0)"); ctx.lineTo(x(data.length - 1), h - pad.b); ctx.lineTo(x(0), h - pad.b); ctx.closePath(); ctx.fillStyle = gradient; ctx.fill(); ctx.fillStyle = text; ctx.textAlign = "center"; ctx.textBaseline = "bottom"; const labels = state.range === "1D" ? ["09:15", "11:00", "13:00", "15:30"] : state.range === "1W" ? ["Mon", "Tue", "Wed", "Thu", "Fri"] : state.range === "1M" ? ["Week 1", "Week 2", "Week 3", "Week 4"] : ["Month 1", "Month 2", "Month 3"]; labels.forEach((label, i) => ctx.fillText(label, pad.l + i * (w - pad.l - pad.r) / (labels.length - 1), h - 3)); }
+function showChartTooltip(event) { const canvas = $("#priceChart"); const data = canvas._series; const c = canvas._coords; if (!data || !c) return; const rect = canvas.getBoundingClientRect(); const mx = event.clientX - rect.left; const index = Math.max(0, Math.min(data.length - 1, Math.round((mx - c.pad.l) / (c.w - c.pad.l - c.pad.r) * (data.length - 1)))); const px = c.x(index), py = c.y(data[index]); const tooltip = $("#chartTooltip"); tooltip.textContent = `${state.range} · ${inr.format(data[index])}`; tooltip.style.left = `${px}px`; tooltip.style.top = `${py}px`; tooltip.style.opacity = "1"; }
+function simulatePrices() { stocks.forEach((s, i) => { const originalClose = prevClose(s); const move = (pseudoRandom(Date.now() / 5000 + s.seed + i) - .5) * .0018; s.price = Math.max(1, s.price * (1 + move)); s.change = ((s.price - originalClose) / originalClose) * 100; }); indices.nifty.value *= 1 + (pseudoRandom(Date.now() / 8000) - .5) * .0006; indices.sensex.value *= 1 + (pseudoRandom(Date.now() / 9000 + 3) - .5) * .0005; indices.bank.value *= 1 + (pseudoRandom(Date.now() / 8500 + 8) - .5) * .0007; renderAllDynamic(); }
+function renderIndices() { $("#niftyPrice").textContent = indices.nifty.value.toLocaleString("en-IN", { maximumFractionDigits: 2 }); $("#sensexPrice").textContent = indices.sensex.value.toLocaleString("en-IN", { maximumFractionDigits: 2 }); $("#bankPrice").textContent = indices.bank.value.toLocaleString("en-IN", { maximumFractionDigits: 2 }); }
+function renderAllDynamic() { renderIndices(); renderSelected(); renderMovers(); renderWatchlist(); renderPortfolio(); renderMarketTable(); }
+$("#stockSearch").addEventListener("input", e => renderSearch(e.target.value));
+$("#searchResults").addEventListener("click", e => { const item = e.target.closest("[data-symbol]"); if (item) selectStock(item.dataset.symbol); });
+document.addEventListener("click", e => { if (!e.target.closest(".search-box")) $("#searchResults").classList.remove("open"); });
+$("#watchButton").addEventListener("click", () => toggleWatch(state.selected));
+$("#watchlistBody").addEventListener("click", e => { const remove = e.target.closest("[data-remove]"); if (remove) { toggleWatch(remove.dataset.remove); return; } const select = e.target.closest("[data-symbol]"); if (select) selectStock(select.dataset.symbol); });
+$$(".range-buttons button").forEach(btn => btn.addEventListener("click", () => { $$(".range-buttons button").forEach(b => b.classList.toggle("active", b === btn)); state.range = btn.dataset.range; drawChart(); }));
+$$(".movers-tabs button").forEach(btn => btn.addEventListener("click", () => { $$(".movers-tabs button").forEach(b => b.classList.toggle("active", b === btn)); state.moverMode = btn.dataset.mover; renderMovers(); }));
+$("#moversList").addEventListener("click", e => { const row = e.target.closest("[data-symbol]"); if (row) selectStock(row.dataset.symbol); });
+$("#holdingSymbol").addEventListener("change", e => { $("#holdingCost").value = stockBySymbol(e.target.value).price.toFixed(2); });
+$("#holdingForm").addEventListener("submit", e => { e.preventDefault(); const symbol = $("#holdingSymbol").value; const qty = Number($("#holdingQty").value); const cost = Number($("#holdingCost").value); if (!qty || !cost) return; const existing = state.holdings.find(h => h.symbol === symbol); if (existing) { const totalQty = existing.qty + qty; existing.cost = ((existing.qty * existing.cost) + (qty * cost)) / totalQty; existing.qty = totalQty; } else state.holdings.push({ symbol, qty, cost }); saveHoldings(); renderPortfolio(); });
+$("#holdingsList").addEventListener("click", e => { const btn = e.target.closest("[data-holding-remove]"); if (!btn) return; state.holdings.splice(Number(btn.dataset.holdingRemove), 1); saveHoldings(); renderPortfolio(); });
+$("#clearPortfolio").addEventListener("click", () => { state.holdings = []; saveHoldings(); renderPortfolio(); });
+$("#sectorFilter").addEventListener("change", renderMarketTable); $("#sortSelect").addEventListener("change", renderMarketTable);
+$("#marketTableBody").addEventListener("click", e => { const watch = e.target.closest("[data-watch-table]"); if (watch) { toggleWatch(watch.dataset.watchTable); return; } const select = e.target.closest("[data-symbol]"); if (select) selectStock(select.dataset.symbol); });
+$("#themeToggle").addEventListener("click", () => { state.theme = state.theme === "dark" ? "light" : "dark"; localStorage.setItem("marketpulse-theme", state.theme); applyTheme(); });
+$("#mobileMenu").addEventListener("click", () => $("#sidebar").classList.toggle("open"));
+$$(".side-nav a").forEach(a => a.addEventListener("click", () => $("#sidebar").classList.remove("open")));
+$("#refreshButton").addEventListener("click", () => { simulatePrices(); $("#refreshButton").animate([{ transform: "rotate(0deg)" }, { transform: "rotate(360deg)" }], { duration: 450 }); });
+$("#priceChart").addEventListener("mousemove", showChartTooltip); $("#priceChart").addEventListener("mouseleave", () => $("#chartTooltip").style.opacity = "0"); window.addEventListener("resize", drawChart);
+initPortfolioForm(); initFilters(); applyTheme(); renderAllDynamic(); setInterval(simulatePrices, 7000);
