@@ -1,60 +1,59 @@
-# StudySpace - CLA Retake Final Project
+# MarketPulse - Interactive Stock Tracker
 
-StudySpace is a conceptual student productivity and academic resource website created for the September 2026 CLA retake final project.
+MarketPulse is an ambitious responsive front-end stock-market dashboard created for the September 2026 CLA Final Project submission. It is designed as a fictional financial-technology product for retail investors who want a single interface for market monitoring, watchlists and paper portfolio tracking.
 
 ## Business Details
 
-- **Business name:** StudySpace
-- **Type:** Student productivity / education technology concept
-- **Target users:** School and university students
-- **Core offering:** A simple online space for study planning, revision guidance and practical productivity tips
-- **Value proposition:** Help students organise study sessions through a clean, responsive and easy-to-use interface
+**Business:** MarketPulse Financial Technologies (concept project)
+
+**Product:** A browser-based market dashboard for retail investors and students learning about equity markets.
+
+**Target users:** Individual investors, finance students and beginners who want a clean dashboard for following Indian equities without placing real trades.
 
 ## Website Goals
 
-- Present study resources in a clear and organised format
-- Provide a responsive experience across desktop, tablet and mobile devices
-- Make navigation simple and intuitive
-- Demonstrate modern front-end layout techniques
-- Add lightweight JavaScript interactivity without unnecessary frameworks
-- Improve readability, accessibility and visual consistency
+- Present a professional stock-market dashboard rather than a basic static webpage.
+- Let users search and inspect a universe of major Indian stocks.
+- Visualise price history using a custom HTML Canvas chart.
+- Allow users to create and persist a personal watchlist.
+- Provide a paper portfolio that calculates current value and profit/loss.
+- Demonstrate responsive interface design across desktop, tablet and mobile.
+- Demonstrate practical JavaScript state management and browser LocalStorage.
+
+## Major Features
+
+- Responsive dashboard/sidebar layout
+- Search by stock symbol or company name
+- Interactive 1D, 1W, 1M and 3M price chart using the Canvas API
+- Simulated market ticks and manual refresh interaction
+- Gainers/losers switcher
+- Persistent watchlist using LocalStorage
+- Paper portfolio with quantity, average cost, current value and P&L calculations
+- Sector filters and sorting in the market explorer table
+- Dark/light theme toggle with persistent preference
+- Responsive mobile navigation
+- Representative NIFTY 50, SENSEX and BANK NIFTY index cards
+- Accessible labels, semantic HTML and keyboard-compatible controls
 
 ## Design and Tool Decisions
 
-- Semantic HTML5 for clear page structure
-- CSS Flexbox for the navigation bar and alignment
-- CSS Grid for responsive resource cards and page sections
-- Google Font (Inter) for improved readability
-- CSS variables for consistent colours and styling
-- Media queries for tablet and mobile responsiveness
-- Sticky navigation and smooth scrolling for easier movement between sections
-- Hover effects and transitions for visual feedback
-- Vanilla JavaScript for the mobile menu, current year and study-goal form validation
-- Accessible form labels and ARIA attributes where appropriate
+The interface uses a dark financial-dashboard aesthetic with information-dense cards, restrained accent colours and responsive CSS Grid/Flexbox layouts. The project uses only HTML5, CSS3 and vanilla JavaScript, with no framework and no API key. This keeps the submission portable and easy to run while still demonstrating substantial front-end logic. Google Font Inter improves readability. HTML Canvas is used for custom chart rendering, and LocalStorage persists user watchlists, portfolio holdings and theme preference.
 
-## Main Improvements
+## Important Data Note
 
-- Added a responsive Flexbox navigation bar
-- Added a mobile navigation menu
-- Added responsive CSS Grid card layouts
-- Improved spacing, typography and visual hierarchy
-- Added a Google Font
-- Added media queries for smaller screens
-- Added interactive form validation using JavaScript
-- Added hover effects and smooth transitions
-- Added semantic and accessibility improvements
-
-## Live Website
-
-https://html-preview.github.io/?url=https://github.com/rangakartik21-star/cla-retake-web-project/blob/main/index.html
+All prices are representative sample data and subsequent movements are simulated locally for demonstration. MarketPulse is not connected to an exchange and does not provide investment advice.
 
 ## Source Code Repository
 
 https://github.com/rangakartik21-star/cla-retake-web-project
 
+## Live Website Preview
+
+https://raw.githack.com/rangakartik21-star/cla-retake-web-project/main/index.html
+
 ## Files
 
-- `index.html` - page structure and content
-- `styles.css` - layout, colours, typography and responsive design
-- `script.js` - mobile navigation and form interaction
-- `README.md` - project documentation
+- `index.html` - dashboard structure and interface
+- `styles.css` - responsive layout, themes and visual styling
+- `script.js` - stock data, charting, watchlist, portfolio, filters and interactions
+- `README.md` - business details, goals and technical documentation
