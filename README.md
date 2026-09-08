@@ -1,59 +1,62 @@
-# MarketPulse - Interactive Stock Tracker
+# Vimal Electronics - Local Business Website
 
-MarketPulse is an ambitious responsive front-end stock-market dashboard created for the September 2026 CLA Final Project submission. It is designed as a fictional financial-technology product for retail investors who want a single interface for market monitoring, watchlists and paper portfolio tracking.
+A responsive front-end website created for a real small electronics business in Ahmedabad as part of the September 2026 CLA final project.
 
-## Business Details
+## Business
 
-**Business:** MarketPulse Financial Technologies (concept project)
+**Vimal Electronics** is a local electronics and mobile-phone retailer on Vastral Road / Amraiwadi, Ahmedabad. Public business listings show a consumer-electronics and home-appliance mix including televisions, air conditioners, refrigerators, washing machines, microwave ovens, audio systems and related electronics.
 
-**Product:** A browser-based market dashboard for retail investors and students learning about equity markets.
+## Project Objective
 
-**Target users:** Individual investors, finance students and beginners who want a clean dashboard for following Indian equities without placing real trades.
+The website gives nearby customers a clean online starting point to understand major product categories, learn where the store is located, call the store for current stock and pricing, and prepare a product enquiry.
 
-## Website Goals
+## Target Audience
 
-- Present a professional stock-market dashboard rather than a basic static webpage.
-- Let users search and inspect a universe of major Indian stocks.
-- Visualise price history using a custom HTML Canvas chart.
-- Allow users to create and persist a personal watchlist.
-- Provide a paper portfolio that calculates current value and profit/loss.
-- Demonstrate responsive interface design across desktop, tablet and mobile.
-- Demonstrate practical JavaScript state management and browser LocalStorage.
+- Households in Vastral, Amraiwadi and nearby Ahmedabad areas
+- Customers comparing TVs and home appliances
+- Students and families looking for local electronics options
+- Customers who prefer speaking with a neighbourhood retailer before buying
 
-## Major Features
+## Website Features
 
-- Responsive dashboard/sidebar layout
-- Search by stock symbol or company name
-- Interactive 1D, 1W, 1M and 3M price chart using the Canvas API
-- Simulated market ticks and manual refresh interaction
-- Gainers/losers switcher
-- Persistent watchlist using LocalStorage
-- Paper portfolio with quantity, average cost, current value and P&L calculations
-- Sector filters and sorting in the market explorer table
-- Dark/light theme toggle with persistent preference
-- Responsive mobile navigation
-- Representative NIFTY 50, SENSEX and BANK NIFTY index cards
-- Accessible labels, semantic HTML and keyboard-compatible controls
+- Responsive mobile-first navigation
+- Product-category filter
+- Product enquiry builder
+- Click-to-call store contact
+- Google Maps directions link
+- About/business-information section
+- Product-category cards for TVs, ACs, refrigerators, washing machines, microwaves, home audio and mobiles/accessories
+- Responsive desktop, tablet and mobile layouts
+- Semantic HTML and accessible form controls
 
-## Design and Tool Decisions
+## Design Decisions
 
-The interface uses a dark financial-dashboard aesthetic with information-dense cards, restrained accent colours and responsive CSS Grid/Flexbox layouts. The project uses only HTML5, CSS3 and vanilla JavaScript, with no framework and no API key. This keeps the submission portable and easy to run while still demonstrating substantial front-end logic. Google Font Inter improves readability. HTML Canvas is used for custom chart rendering, and LocalStorage persists user watchlists, portfolio holdings and theme preference.
+The site uses a warm off-white, deep navy and orange palette. The layout is intentionally clean and trustworthy rather than looking like a large e-commerce marketplace. Product cards focus on categories instead of publishing prices that may quickly become outdated. The store name is presented typographically; no new logo is claimed for the business.
 
-## Important Data Note
+## Tools
 
-All prices are representative sample data and subsequent movements are simulated locally for demonstration. MarketPulse is not connected to an exchange and does not provide investment advice.
+- HTML5
+- CSS3
+- CSS Grid and Flexbox
+- Vanilla JavaScript
+- Google Fonts (Manrope and DM Sans)
+- GitHub for source control
+- GitHub Pages intended for hosting
 
-## Source Code Repository
+## Data / Permission Note
+
+The website prototype uses publicly available business details. Owner permission and any interview statements required by the assessment should be obtained by the student directly; this repository does not claim that such permission or interview has taken place.
+
+## Public Business Details Used
+
+- Store: Vimal Electronics
+- Location: Bhagatbapa Nagar Society / Vastral Road, Amraiwadi, Ahmedabad 380026
+- Phone: +91 93136 91209
+
+## Repository
 
 https://github.com/rangakartik21-star/cla-retake-web-project
 
-## Live Website Preview
+## Intended GitHub Pages URL
 
-https://raw.githack.com/rangakartik21-star/cla-retake-web-project/main/index.html
-
-## Files
-
-- `index.html` - dashboard structure and interface
-- `styles.css` - responsive layout, themes and visual styling
-- `script.js` - stock data, charting, watchlist, portfolio, filters and interactions
-- `README.md` - business details, goals and technical documentation
+https://rangakartik21-star.github.io/cla-retake-web-project/
