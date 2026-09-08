@@ -1,31 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Vimal Electronics, Ahmedabad — local multi-brand electronics and home appliance store on Vastral Road." />
-  <title>Vimal Electronics | Ahmedabad</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vimal Electronics - local electronics and home-appliance store in Ahmedabad." />
+  <meta name="theme-color" content="#0c1b33" />
+  <title>Vimal Electronics | Electronics & Home Appliances in Ahmedabad</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header" id="top">
-    <nav class="nav container" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Vimal Electronics home">
-        <span class="brand-copy"><strong>Vimal Electronics</strong><small>Ahmedabad</small></span>
-      </a>
-      <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+  <header class="site-header" id="home">
+    <div class="announcement">Local electronics & home appliances · Vastral Road / Amraiwadi, Ahmedabad</div>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="wordmark" href="#home">Vimal <span>Electronics</span></a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
+        <a href="#featured">Featured</a>
         <a href="#products">Products</a>
-        <a href="#services">Services</a>
+        <a href="#advisor">Product Advisor</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cta" href="tel:+919313691209">Call Store</a>
       </div>
+      <a class="nav-cta" href="tel:+919313691209">Call Store</a>
     </nav>
   </header>
 
@@ -33,49 +32,167 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Local electronics store · Vastral Road, Ahmedabad</p>
-          <h1>Electronics for everyday life, with a local store you can talk to.</h1>
-          <p class="hero-text">Explore popular home-electronics categories, compare what you need, and contact Vimal Electronics directly for current availability, pricing and product guidance.</p>
+          <p class="eyebrow">Ahmedabad electronics store</p>
+          <h1>Choose electronics with <em>less guesswork.</em></h1>
+          <p class="hero-lede">Browse the store's main product categories, understand the features that matter, and contact Vimal Electronics for current models, prices and availability.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#products">Browse categories</a>
-            <a class="button secondary" href="tel:+919313691209">Call +91 93136 91209</a>
+            <a class="button primary" href="#featured">Explore key products</a>
+            <a class="button secondary" href="#contact">Ask for current stock</a>
           </div>
-          <div class="hero-points" aria-label="Store highlights">
-            <span><b>25+ yrs</b><small>local business history</small></span>
-            <span><b>Multi-brand</b><small>electronics selection</small></span>
-            <span><b>In-store</b><small>product guidance</small></span>
+          <div class="hero-proof">
+            <div><strong>8+</strong><span>Product categories</span></div>
+            <div><strong>1-click</strong><span>Call & directions</span></div>
+            <div><strong>Mobile</strong><span>Responsive design</span></div>
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Electronics category illustration">
-          <div class="visual-grid">
-            <article class="visual-card tv"><span class="icon" aria-hidden="true">▣</span><strong>Smart TVs</strong><small>Home entertainment</small></article>
-            <article class="visual-card cooling"><span class="icon" aria-hidden="true">❄</span><strong>Air Conditioners</strong><small>Cooling solutions</small></article>
-            <article class="visual-card fridge"><span class="icon" aria-hidden="true">▥</span><strong>Refrigerators</strong><small>Kitchen essentials</small></article>
-            <article class="visual-card wash"><span class="icon" aria-hidden="true">◉</span><strong>Washing Machines</strong><small>Laundry appliances</small></article>
+        <div class="hero-showcase" aria-label="Illustration of home electronics">
+          <div class="showcase-card tv-card">
+            <svg viewBox="0 0 320 220" role="img" aria-label="Smart television illustration">
+              <defs><linearGradient id="tvgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3057f3"/><stop offset="1" stop-color="#7e8cff"/></linearGradient></defs>
+              <rect x="34" y="28" width="252" height="150" rx="14" fill="#0e1830"/>
+              <rect x="45" y="39" width="230" height="128" rx="8" fill="url(#tvgrad)"/>
+              <circle cx="110" cy="98" r="36" fill="#ffffff" opacity=".15"/>
+              <path d="M74 128 C115 82, 176 79, 246 122" fill="none" stroke="#fff" stroke-width="8" opacity=".7"/>
+              <rect x="143" y="178" width="34" height="10" rx="5" fill="#192541"/>
+              <rect x="114" y="188" width="92" height="8" rx="4" fill="#192541"/>
+            </svg>
+            <div><span>Entertainment</span><strong>Smart TVs</strong></div>
+          </div>
+          <div class="showcase-card appliance-card">
+            <svg viewBox="0 0 180 220" role="img" aria-label="Refrigerator illustration">
+              <rect x="39" y="14" width="102" height="192" rx="16" fill="#eef3ff" stroke="#b7c7f7" stroke-width="3"/>
+              <line x1="39" y1="94" x2="141" y2="94" stroke="#b7c7f7" stroke-width="3"/>
+              <rect x="119" y="50" width="6" height="26" rx="3" fill="#5c6b87"/>
+              <rect x="119" y="116" width="6" height="34" rx="3" fill="#5c6b87"/>
+              <circle cx="90" cy="143" r="27" fill="#dbe7ff"/>
+              <path d="M77 143h26M90 130v26" stroke="#5e7ce2" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <div><span>Kitchen</span><strong>Refrigerators</strong></div>
+          </div>
+          <div class="showcase-card ac-card">
+            <svg viewBox="0 0 260 150" role="img" aria-label="Air conditioner illustration">
+              <rect x="18" y="26" width="224" height="78" rx="18" fill="#f6f8ff" stroke="#c9d5f4" stroke-width="3"/>
+              <rect x="34" y="42" width="192" height="12" rx="6" fill="#dfe7fb"/>
+              <path d="M54 75h150" stroke="#8fa5df" stroke-width="4" stroke-linecap="round"/>
+              <path d="M74 110c0 20 16 20 16 32M130 110c0 20 16 20 16 32M186 110c0 20 16 20 16 32" fill="none" stroke="#4a78f3" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+              <circle cx="210" cy="67" r="7" fill="#38b88b"/>
+            </svg>
+            <div><span>Cooling</span><strong>Air Conditioners</strong></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="trust-strip" aria-label="Why customers choose a neighbourhood store">
+    <section class="trust-strip">
       <div class="container trust-grid">
-        <div><span>01</span><p><strong>Talk to a real store</strong><br />Ask about models, stock and suitability before you buy.</p></div>
-        <div><span>02</span><p><strong>Compare categories</strong><br />One place for TVs, cooling, kitchen and laundry electronics.</p></div>
-        <div><span>03</span><p><strong>Local convenience</strong><br />Visit the Vastral Road store or call before making the trip.</p></div>
+        <article><span>01</span><div><strong>Understand before buying</strong><p>See what features matter before calling or visiting.</p></div></article>
+        <article><span>02</span><div><strong>Confirm current stock</strong><p>Electronics models change quickly, so availability is checked directly.</p></div></article>
+        <article><span>03</span><div><strong>Local store convenience</strong><p>Call the store or open directions in one click.</p></div></article>
       </div>
     </section>
 
     <section class="section" id="about">
-      <div class="container split">
+      <div class="container about-grid">
         <div>
           <p class="eyebrow">About the business</p>
-          <h2>A neighbourhood electronics retailer in Ahmedabad.</h2>
+          <h2>A local electronics retailer built around practical buying decisions.</h2>
         </div>
-        <div class="prose">
-          <p>Vimal Electronics is a small proprietorship-based electronics business in Ahmedabad. Public business listings identify the store with Vastral Road / Amraiwadi and show a product mix spanning consumer electronics and home appliances.</p>
-          <p>This website is designed to give nearby customers a simple first stop online: understand what the store sells, identify the right product category, and contact the store for up-to-date price and availability.</p>
-          <a class="text-link" href="#contact">Store details & directions <span>→</span></a>
+        <div class="about-copy">
+          <p>Vimal Electronics is a neighbourhood electronics and home-appliance retailer serving customers around Vastral Road / Amraiwadi in Ahmedabad. The website is designed as a digital front door to the store rather than an online checkout system.</p>
+          <p>Customers can review major categories, compare the kinds of features that usually matter, prepare an enquiry, and contact the store for the latest price, model and availability.</p>
+          <a class="text-link" href="#contact">See contact details <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section featured-section" id="featured">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">Key products</p><h2>Four categories customers often compare carefully.</h2></div>
+          <p>These are buying-guide illustrations, not claims about any particular model currently in stock. Contact the store for current brands, specifications and pricing.</p>
+        </div>
+
+        <div class="featured-products">
+          <article class="feature-product">
+            <div class="product-illustration blue">
+              <svg viewBox="0 0 360 250" aria-hidden="true">
+                <rect x="36" y="35" width="288" height="165" rx="16" fill="#111b33"/>
+                <rect x="50" y="49" width="260" height="137" rx="9" fill="#3664ff"/>
+                <circle cx="129" cy="108" r="45" fill="#90aaff" opacity=".55"/>
+                <path d="M86 150 C134 105, 212 98, 285 146" stroke="#fff" stroke-width="10" opacity=".72" fill="none"/>
+                <rect x="164" y="202" width="32" height="12" rx="6" fill="#1d2a48"/>
+                <rect x="128" y="214" width="104" height="9" rx="4" fill="#1d2a48"/>
+              </svg>
+            </div>
+            <div class="feature-copy">
+              <p class="mini-label">Smart TV</p><h3>Think about size, panel and software.</h3>
+              <p>For most homes, the right TV depends on viewing distance, room brightness and how heavily streaming apps are used.</p>
+              <div class="spec-chips"><span>4K resolution</span><span>HDR support</span><span>Smart apps</span><span>HDMI ports</span></div>
+              <ul><li>Measure the viewing distance before choosing screen size.</li><li>Check panel type and brightness if the room gets strong daylight.</li><li>Confirm app support and enough HDMI ports for consoles or set-top boxes.</li></ul>
+              <button class="inquiry-button" data-product="Smart TV" type="button">Ask about TVs</button>
+            </div>
+          </article>
+
+          <article class="feature-product reverse">
+            <div class="product-illustration mint">
+              <svg viewBox="0 0 360 250" aria-hidden="true">
+                <rect x="45" y="55" width="270" height="92" rx="20" fill="#f9fbff" stroke="#b8d1d0" stroke-width="4"/>
+                <rect x="64" y="74" width="232" height="14" rx="7" fill="#dbecea"/>
+                <path d="M80 113h190" stroke="#80a6a2" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="280" cy="112" r="9" fill="#28b38c"/>
+                <path d="M105 161c0 28 18 28 18 54M178 161c0 28 18 28 18 54M251 161c0 28 18 28 18 54" stroke="#42b6b0" stroke-width="6" stroke-linecap="round" fill="none" opacity=".7"/>
+              </svg>
+            </div>
+            <div class="feature-copy">
+              <p class="mini-label">Split AC</p><h3>Match tonnage and efficiency to the room.</h3>
+              <p>Cooling capacity should fit room size and heat load. Energy efficiency matters most when the AC runs for long hours.</p>
+              <div class="spec-chips"><span>Inverter</span><span>1-2 ton range</span><span>Energy rating</span><span>Air filtration</span></div>
+              <ul><li>Room area, sunlight and top-floor heat affect required capacity.</li><li>Higher efficiency can matter more than a small upfront price difference.</li><li>Ask about installation requirements and warranty coverage.</li></ul>
+              <button class="inquiry-button" data-product="Air Conditioner" type="button">Ask about ACs</button>
+            </div>
+          </article>
+
+          <article class="feature-product">
+            <div class="product-illustration ice">
+              <svg viewBox="0 0 360 250" aria-hidden="true">
+                <rect x="110" y="18" width="140" height="214" rx="20" fill="#f8fbff" stroke="#b9c9ef" stroke-width="4"/>
+                <line x1="110" y1="105" x2="250" y2="105" stroke="#b9c9ef" stroke-width="4"/>
+                <rect x="221" y="52" width="7" height="31" rx="3.5" fill="#5f6c86"/>
+                <rect x="221" y="129" width="7" height="39" rx="3.5" fill="#5f6c86"/>
+                <circle cx="180" cy="155" r="36" fill="#dfe8ff"/>
+                <path d="M165 155h30M180 140v30" stroke="#6687e8" stroke-width="6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="feature-copy">
+              <p class="mini-label">Refrigerator</p><h3>Choose capacity around household size and habits.</h3>
+              <p>Capacity, door configuration and power efficiency should reflect family size, kitchen space and how groceries are stored.</p>
+              <div class="spec-chips"><span>Frost-free</span><span>Inverter compressor</span><span>300-400L class</span><span>Convertible modes</span></div>
+              <ul><li>Measure the kitchen opening before deciding on a larger refrigerator.</li><li>Frost-free models reduce manual defrosting.</li><li>Adjustable storage and convertible zones help flexible households.</li></ul>
+              <button class="inquiry-button" data-product="Refrigerator" type="button">Ask about fridges</button>
+            </div>
+          </article>
+
+          <article class="feature-product reverse">
+            <div class="product-illustration lavender">
+              <svg viewBox="0 0 360 250" aria-hidden="true">
+                <rect x="92" y="20" width="176" height="212" rx="22" fill="#f7f5ff" stroke="#c9c0ee" stroke-width="4"/>
+                <rect x="111" y="38" width="138" height="34" rx="10" fill="#e7e1fb"/>
+                <circle cx="132" cy="55" r="7" fill="#7c6cc6"/>
+                <circle cx="224" cy="55" r="7" fill="#7c6cc6"/>
+                <circle cx="180" cy="145" r="58" fill="#1d2741"/>
+                <circle cx="180" cy="145" r="45" fill="#8ca8e8"/>
+                <path d="M148 144c18-26 46-31 68-6" stroke="#fff" stroke-width="8" fill="none" opacity=".65" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="feature-copy">
+              <p class="mini-label">Washing Machine</p><h3>Capacity and loading style shape daily convenience.</h3>
+              <p>Family size, wash frequency and available space usually determine whether a top-load, front-load or semi-automatic machine fits best.</p>
+              <div class="spec-chips"><span>7-9 kg class</span><span>Front / top load</span><span>Inverter motor</span><span>Wash programs</span></div>
+              <ul><li>Choose capacity based on average laundry load, not only family count.</li><li>Front-load machines generally use space differently from top-load models.</li><li>Check cycle choices, spin speed and warranty on the motor.</li></ul>
+              <button class="inquiry-button" data-product="Washing Machine" type="button">Ask about washers</button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -83,10 +200,9 @@
     <section class="section section-soft" id="products">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">Product categories</p><h2>What are you looking for?</h2></div>
-          <p>Use the filters to narrow the catalogue. Exact brands, models and prices change, so the site encourages customers to contact the store for current stock.</p>
+          <div><p class="eyebrow">Product range</p><h2>Browse the wider electronics categories.</h2></div>
+          <p>Filter the catalogue by use case. The cards describe categories, not guaranteed current inventory.</p>
         </div>
-
         <div class="filter-row" role="group" aria-label="Product category filters">
           <button class="filter active" data-filter="all" type="button">All</button>
           <button class="filter" data-filter="entertainment" type="button">Entertainment</button>
@@ -94,66 +210,67 @@
           <button class="filter" data-filter="kitchen" type="button">Kitchen</button>
           <button class="filter" data-filter="laundry" type="button">Laundry</button>
         </div>
-
         <div class="product-grid" id="productGrid">
-          <article class="product-card" data-category="entertainment">
-            <div class="product-icon">▣</div><span class="category-tag">Entertainment</span><h3>LED & Smart TVs</h3><p>Explore screen sizes and smart features for everyday viewing, sports and streaming.</p><button class="inquiry-button" data-product="LED & Smart TVs" type="button">Ask about TVs</button>
-          </article>
-          <article class="product-card" data-category="entertainment">
-            <div class="product-icon">♫</div><span class="category-tag">Entertainment</span><h3>Home Audio</h3><p>Sound systems and home-theatre options for movies, music and family entertainment.</p><button class="inquiry-button" data-product="Home Audio" type="button">Ask about audio</button>
-          </article>
-          <article class="product-card" data-category="cooling">
-            <div class="product-icon">❄</div><span class="category-tag">Cooling</span><h3>Air Conditioners</h3><p>Split, inverter and other cooling options for bedrooms, living rooms and offices.</p><button class="inquiry-button" data-product="Air Conditioners" type="button">Ask about ACs</button>
-          </article>
-          <article class="product-card" data-category="cooling">
-            <div class="product-icon">≋</div><span class="category-tag">Cooling</span><h3>Air Coolers</h3><p>Practical cooling choices for seasonal use and spaces where conventional AC may not fit.</p><button class="inquiry-button" data-product="Air Coolers" type="button">Ask about coolers</button>
-          </article>
-          <article class="product-card" data-category="kitchen">
-            <div class="product-icon">▥</div><span class="category-tag">Kitchen</span><h3>Refrigerators</h3><p>Single-door, double-door and larger family refrigeration categories.</p><button class="inquiry-button" data-product="Refrigerators" type="button">Ask about fridges</button>
-          </article>
-          <article class="product-card" data-category="kitchen">
-            <div class="product-icon">◫</div><span class="category-tag">Kitchen</span><h3>Microwave Ovens</h3><p>Compact microwave solutions for reheating, everyday cooking and busy households.</p><button class="inquiry-button" data-product="Microwave Ovens" type="button">Ask about microwaves</button>
-          </article>
-          <article class="product-card" data-category="laundry">
-            <div class="product-icon">◉</div><span class="category-tag">Laundry</span><h3>Washing Machines</h3><p>Top-load, front-load and semi-automatic categories for different household needs.</p><button class="inquiry-button" data-product="Washing Machines" type="button">Ask about washers</button>
-          </article>
-          <article class="product-card" data-category="entertainment">
-            <div class="product-icon">⌁</div><span class="category-tag">Electronics</span><h3>Mobiles & Accessories</h3><p>Ask the store about available mobile-phone and accessory options before visiting.</p><button class="inquiry-button" data-product="Mobiles & Accessories" type="button">Ask about mobiles</button>
-          </article>
+          <article class="product-card" data-category="entertainment"><span class="card-icon">TV</span><span class="category-tag">Entertainment</span><h3>LED & Smart TVs</h3><p>Screen sizes, smart platforms, 4K, HDR and connectivity options.</p><button class="inquiry-button" data-product="LED & Smart TVs" type="button">Ask about TVs</button></article>
+          <article class="product-card" data-category="entertainment"><span class="card-icon">♫</span><span class="category-tag">Entertainment</span><h3>Home Audio</h3><p>Soundbars, speakers and home-theatre categories for movies and music.</p><button class="inquiry-button" data-product="Home Audio" type="button">Ask about audio</button></article>
+          <article class="product-card" data-category="cooling"><span class="card-icon">❄</span><span class="category-tag">Cooling</span><h3>Air Conditioners</h3><p>Split, inverter and other room-cooling options.</p><button class="inquiry-button" data-product="Air Conditioners" type="button">Ask about ACs</button></article>
+          <article class="product-card" data-category="cooling"><span class="card-icon">≋</span><span class="category-tag">Cooling</span><h3>Air Coolers</h3><p>Seasonal cooling choices for rooms where conventional AC may not fit.</p><button class="inquiry-button" data-product="Air Coolers" type="button">Ask about coolers</button></article>
+          <article class="product-card" data-category="kitchen"><span class="card-icon">RF</span><span class="category-tag">Kitchen</span><h3>Refrigerators</h3><p>Single-door, double-door and larger family refrigeration categories.</p><button class="inquiry-button" data-product="Refrigerators" type="button">Ask about fridges</button></article>
+          <article class="product-card" data-category="kitchen"><span class="card-icon">MW</span><span class="category-tag">Kitchen</span><h3>Microwave Ovens</h3><p>Compact options for reheating and everyday cooking.</p><button class="inquiry-button" data-product="Microwave Ovens" type="button">Ask about microwaves</button></article>
+          <article class="product-card" data-category="laundry"><span class="card-icon">WM</span><span class="category-tag">Laundry</span><h3>Washing Machines</h3><p>Top-load, front-load and semi-automatic categories.</p><button class="inquiry-button" data-product="Washing Machines" type="button">Ask about washers</button></article>
+          <article class="product-card" data-category="entertainment"><span class="card-icon">MB</span><span class="category-tag">Electronics</span><h3>Mobiles & Accessories</h3><p>Ask the store about currently available phones and accessories.</p><button class="inquiry-button" data-product="Mobiles & Accessories" type="button">Ask about mobiles</button></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-heading narrow"><div><p class="eyebrow">Website-supported customer journey</p><h2>From browsing to visiting the store.</h2></div></div>
-        <div class="service-grid">
-          <article><span>01</span><h3>Browse categories</h3><p>Understand the store's major electronics and appliance categories without needing a long catalogue.</p></article>
-          <article><span>02</span><h3>Send an enquiry</h3><p>Select a product category and create a ready-to-copy enquiry containing your name and contact number.</p></article>
-          <article><span>03</span><h3>Call for live stock</h3><p>Because electronics pricing and availability change, customers are directed to confirm before visiting.</p></article>
-          <article><span>04</span><h3>Visit the store</h3><p>Use the map link for directions to the Vastral Road / Amraiwadi location.</p></article>
+    <section class="section advisor-section" id="advisor">
+      <div class="container advisor-grid">
+        <div>
+          <p class="eyebrow">Interactive product advisor</p>
+          <h2>Not sure what to ask for?</h2>
+          <p>Choose your need and the page will suggest the most useful starting category and questions to ask the store.</p>
+        </div>
+        <form class="advisor-card" id="advisorForm">
+          <label>What are you shopping for?
+            <select id="advisorNeed"><option value="living-room">Living-room entertainment</option><option value="cooling">Room cooling</option><option value="food-storage">Food storage</option><option value="laundry">Laundry</option></select>
+          </label>
+          <label>What matters most?
+            <select id="advisorPriority"><option value="value">Value for money</option><option value="efficiency">Energy efficiency</option><option value="features">More features</option><option value="space">Compact size</option></select>
+          </label>
+          <button class="button primary full" type="submit">Get a starting point</button>
+          <div class="advisor-result" id="advisorResult" aria-live="polite"><span>Suggestion will appear here.</span></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="container faq-grid">
+        <div><p class="eyebrow">Frequently asked questions</p><h2>Useful before you visit.</h2></div>
+        <div class="accordion" id="faqAccordion">
+          <article><button type="button" aria-expanded="false">Are the prices on the website final?<span>+</span></button><div><p>No. The site intentionally does not publish fixed prices because electronics prices and available models change. Call the store for current quotations.</p></div></article>
+          <article><button type="button" aria-expanded="false">Can I confirm a specific model before visiting?<span>+</span></button><div><p>Yes. Use the enquiry builder or call the store and mention the category, preferred size/capacity and any must-have feature.</p></div></article>
+          <article><button type="button" aria-expanded="false">Does the website take online payments?<span>+</span></button><div><p>No. This project is designed as a showcase and enquiry website for a local retailer, not an e-commerce checkout system.</p></div></article>
         </div>
       </div>
     </section>
 
-    <section class="section section-dark" id="contact">
+    <section class="section contact-section" id="contact">
       <div class="container contact-grid">
         <div>
           <p class="eyebrow light">Contact & visit</p>
-          <h2>Talk to Vimal Electronics before you buy.</h2>
-          <p class="contact-intro">For the latest price, stock and model availability, call the store directly or use the enquiry builder.</p>
-          <div class="contact-list">
-            <a href="tel:+919313691209"><span>Phone</span><strong>+91 93136 91209</strong></a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Vimal+Electronics+Bhagatbapa+Nagar+Vastral+Road+Ahmedabad" target="_blank" rel="noreferrer"><span>Address</span><strong>Bhagatbapa Nagar Society, Vastral Road, Amraiwadi, Ahmedabad 380026</strong></a>
+          <h2>Ask about the model you need.</h2>
+          <p class="contact-lede">For latest pricing, availability and brand options, call the store or prepare a short enquiry message below.</p>
+          <div class="contact-cards">
+            <a href="tel:+919313691209"><span>Phone</span><strong>+91 93136 91209</strong><small>Tap to call</small></a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Vimal+Electronics+Bhagatbapa+Nagar+Vastral+Road+Ahmedabad" target="_blank" rel="noreferrer"><span>Visit</span><strong>Vastral Road / Amraiwadi</strong><small>Open directions</small></a>
           </div>
         </div>
-
         <form class="enquiry-form" id="enquiryForm">
           <div class="form-head"><span>Product enquiry</span><strong>Build a quick message</strong></div>
           <label>Name<input id="customerName" type="text" placeholder="Your name" required /></label>
           <label>Phone<input id="customerPhone" type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required /></label>
-          <label>Interested in<select id="productInterest"><option>LED & Smart TVs</option><option>Air Conditioners</option><option>Air Coolers</option><option>Refrigerators</option><option>Washing Machines</option><option>Microwave Ovens</option><option>Home Audio</option><option>Mobiles & Accessories</option><option>Other electronics</option></select></label>
-          <label>Requirement<textarea id="customerMessage" rows="3" placeholder="e.g. Looking for a 43-inch smart TV within my budget"></textarea></label>
+          <label>Interested in<select id="productInterest"><option>Smart TV</option><option>Air Conditioner</option><option>Refrigerator</option><option>Washing Machine</option><option>Air Cooler</option><option>Microwave Oven</option><option>Home Audio</option><option>Mobiles & Accessories</option><option>Other electronics</option></select></label>
+          <label>Requirement<textarea id="customerMessage" rows="3" placeholder="e.g. Need a 43-inch smart TV for a bright living room"></textarea></label>
           <button class="button primary full" type="submit">Prepare enquiry</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
@@ -166,16 +283,21 @@
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" type="button" data-close-modal aria-label="Close enquiry">×</button>
       <p class="eyebrow">Enquiry ready</p><h2 id="modalTitle">Your message</h2>
-      <p>This front-end prototype prepares the message for you. Copy it, then call the store to make the enquiry.</p>
+      <p>Copy this message and call the store. The website does not send customer data to a server.</p>
       <textarea id="preparedMessage" rows="7" readonly></textarea>
       <div class="modal-actions"><button class="button primary" id="copyMessage" type="button">Copy message</button><a class="button secondary" href="tel:+919313691209">Call store</a></div>
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="container footer-grid"><div><strong>Vimal Electronics</strong><p>Local electronics & home appliances · Ahmedabad</p></div><div><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></div><p class="prototype-note">Student website prototype based on publicly available business information. Current stock and pricing should be confirmed with the store.</p></div>
-  </footer>
+  <div class="mobile-cta"><a href="tel:+919313691209">Call Store</a><a href="#contact">Enquire</a></div>
 
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><strong>Vimal Electronics</strong><p>Local electronics & home appliances · Ahmedabad</p></div>
+      <div><a href="#featured">Key products</a><a href="#products">Categories</a><a href="#contact">Contact</a></div>
+      <p class="prototype-note">Student website prototype based on publicly available business information. Product descriptions are category-level buying guides; current stock, brands, specifications and prices should be confirmed directly with the store.</p>
+    </div>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
