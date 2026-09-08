@@ -53,7 +53,7 @@ https://github.com/rangakartik21-star/cla-retake-web-project
 
 ## Live preview
 
-https://raw.githack.com/rangakartik21-star/cla-retake-web-project/main/index.html
+https://raw.githack.com/rangakartik21-star/cla-retake-web-project/40b95b5095f736229e68df12ab4900159269f332/index.html
 
 ## Note on business permission
 
