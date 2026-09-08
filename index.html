@@ -1,1 +1,182 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="MarketPulse - an interactive stock tracking and paper portfolio dashboard." /><meta name="theme-color" content="#07111f" /><title>MarketPulse | Stock Tracker Dashboard</title><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /><link rel="stylesheet" href="styles.css" /></head><body><div class="app-shell"><aside class="sidebar" id="sidebar"><a class="brand" href="#dashboard" aria-label="MarketPulse home"><span class="brand-mark">M</span><span>Market<span>Pulse</span></span></a><nav class="side-nav" aria-label="Dashboard navigation"><a class="active" href="#dashboard"><span>◫</span> Dashboard</a><a href="#watchlist"><span>☆</span> Watchlist</a><a href="#portfolio"><span>◆</span> Paper Portfolio</a><a href="#market-table"><span>≋</span> Markets</a></nav><div class="sidebar-note"><span class="live-dot"></span><div><strong>Demo feed active</strong><p>Prices update locally for demonstration.</p></div></div><div class="sidebar-footer"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme"><span id="themeIcon">☾</span><span id="themeLabel">Light mode</span></button></div></aside><main class="main-content" id="dashboard"><header class="topbar"><button class="mobile-menu" id="mobileMenu" type="button" aria-label="Open menu">☰</button><div><p class="eyebrow">Market overview</p><h1>Good morning, Investor.</h1></div><div class="topbar-actions"><div class="search-box"><span aria-hidden="true">⌕</span><input id="stockSearch" type="search" placeholder="Search symbol or company" autocomplete="off" aria-label="Search stocks" /><div class="search-results" id="searchResults" role="listbox"></div></div><button class="icon-button" id="refreshButton" type="button" title="Refresh demo prices" aria-label="Refresh prices">↻</button></div></header><section class="market-strip" aria-label="Market indices"><article class="index-card"><div><span class="market-label">NIFTY 50</span><strong id="niftyPrice">24,842.10</strong></div><span class="positive" id="niftyChange">+0.74%</span></article><article class="index-card"><div><span class="market-label">SENSEX</span><strong id="sensexPrice">81,436.18</strong></div><span class="positive" id="sensexChange">+0.61%</span></article><article class="index-card"><div><span class="market-label">BANK NIFTY</span><strong id="bankPrice">54,118.35</strong></div><span class="negative" id="bankChange">-0.18%</span></article><article class="index-card market-status-card"><div><span class="market-label">DEMO MARKET</span><strong>OPEN</strong></div><span class="status-pill"><span class="live-dot"></span> Simulated</span></article></section><section class="dashboard-grid"><article class="panel chart-panel"><div class="panel-header"><div class="stock-heading"><div class="stock-logo" id="stockLogo">R</div><div><div class="stock-title-row"><h2 id="selectedName">Reliance Industries</h2><span id="selectedSymbol">RELIANCE</span></div><p id="selectedSector">Energy · NSE</p></div></div><button class="watch-button" id="watchButton" type="button">☆ Add to watchlist</button></div><div class="price-row"><div><span class="big-price" id="selectedPrice">₹1,418.60</span><span class="price-change positive" id="selectedChange">+₹16.90 (+1.21%)</span></div><div class="range-buttons" aria-label="Chart period"><button data-range="1D">1D</button><button data-range="1W">1W</button><button class="active" data-range="1M">1M</button><button data-range="3M">3M</button></div></div><div class="chart-wrap"><canvas id="priceChart" aria-label="Selected stock price chart"></canvas><div class="chart-tooltip" id="chartTooltip"></div></div><div class="metric-grid"><div><span>Open</span><strong id="metricOpen">₹1,401.30</strong></div><div><span>Day high</span><strong id="metricHigh">₹1,426.90</strong></div><div><span>Day low</span><strong id="metricLow">₹1,396.25</strong></div><div><span>Volume</span><strong id="metricVolume">8.42M</strong></div><div><span>P/E ratio</span><strong id="metricPE">27.8</strong></div><div><span>Market cap</span><strong id="metricCap">₹19.2T</strong></div></div></article><article class="panel movers-panel"><div class="panel-header compact"><div><p class="eyebrow">Today's tape</p><h2>Top movers</h2></div><span class="muted">Demo data</span></div><div class="movers-tabs"><button class="active" data-mover="gainers">Gainers</button><button data-mover="losers">Losers</button></div><div class="movers-list" id="moversList"></div></article></section><section class="dashboard-grid lower-grid"><article class="panel" id="watchlist"><div class="panel-header compact"><div><p class="eyebrow">Saved locally</p><h2>My watchlist</h2></div><span class="count-badge" id="watchCount">0 stocks</span></div><div class="watchlist" id="watchlistBody"></div></article><article class="panel portfolio-panel" id="portfolio"><div class="panel-header compact"><div><p class="eyebrow">Paper trading</p><h2>Virtual portfolio</h2></div><button class="text-button" id="clearPortfolio" type="button">Reset</button></div><div class="portfolio-summary"><div><span>Portfolio value</span><strong id="portfolioValue">₹0</strong></div><div><span>Invested</span><strong id="portfolioInvested">₹0</strong></div><div><span>Total P&amp;L</span><strong id="portfolioPnl">₹0</strong></div></div><form class="holding-form" id="holdingForm"><label>Stock<select id="holdingSymbol"></select></label><label>Quantity<input id="holdingQty" type="number" min="1" step="1" value="10" required /></label><label>Avg. cost (₹)<input id="holdingCost" type="number" min="1" step="0.01" required /></label><button class="primary-button" type="submit">Add holding</button></form><div class="holdings-list" id="holdingsList"></div></article></section><section class="panel market-table-panel" id="market-table"><div class="panel-header compact"><div><p class="eyebrow">Stock universe</p><h2>Market explorer</h2></div><div class="table-controls"><select id="sectorFilter" aria-label="Filter by sector"><option value="All">All sectors</option></select><select id="sortSelect" aria-label="Sort stocks"><option value="cap">Market cap</option><option value="gainers">Top gainers</option><option value="losers">Top losers</option><option value="price">Price</option></select></div></div><div class="table-scroll"><table><thead><tr><th>Company</th><th>Price</th><th>Change</th><th>Volume</th><th>P/E</th><th>Market Cap</th><th></th></tr></thead><tbody id="marketTableBody"></tbody></table></div></section><section class="disclaimer"><strong>Educational demo:</strong> MarketPulse uses representative sample prices and simulated ticks. It is not connected to an exchange and does not provide investment advice.</section><footer class="footer"><span>MarketPulse · Front-End Market Dashboard</span><span>HTML · CSS · JavaScript · Canvas · LocalStorage</span></footer></main></div><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Vimal Electronics, Ahmedabad — local multi-brand electronics and home appliance store on Vastral Road." />
+  <title>Vimal Electronics | Ahmedabad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Vimal Electronics home">
+        <span class="brand-mark" aria-hidden="true">VE</span>
+        <span class="brand-copy"><strong>Vimal Electronics</strong><small>Ahmedabad</small></span>
+      </a>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="tel:+919313691209">Call Store</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Local electronics store · Vastral Road, Ahmedabad</p>
+          <h1>Electronics for everyday life, with a local store you can talk to.</h1>
+          <p class="hero-text">Explore popular home-electronics categories, compare what you need, and contact Vimal Electronics directly for current availability, pricing and product guidance.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#products">Browse categories</a>
+            <a class="button secondary" href="tel:+919313691209">Call +91 93136 91209</a>
+          </div>
+          <div class="hero-points" aria-label="Store highlights">
+            <span><b>25+ yrs</b><small>local business history</small></span>
+            <span><b>Multi-brand</b><small>electronics selection</small></span>
+            <span><b>In-store</b><small>product guidance</small></span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Electronics category illustration">
+          <div class="visual-grid">
+            <article class="visual-card tv"><span class="icon" aria-hidden="true">▣</span><strong>Smart TVs</strong><small>Home entertainment</small></article>
+            <article class="visual-card cooling"><span class="icon" aria-hidden="true">❄</span><strong>Air Conditioners</strong><small>Cooling solutions</small></article>
+            <article class="visual-card fridge"><span class="icon" aria-hidden="true">▥</span><strong>Refrigerators</strong><small>Kitchen essentials</small></article>
+            <article class="visual-card wash"><span class="icon" aria-hidden="true">◉</span><strong>Washing Machines</strong><small>Laundry appliances</small></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Why customers choose a neighbourhood store">
+      <div class="container trust-grid">
+        <div><span>01</span><p><strong>Talk to a real store</strong><br />Ask about models, stock and suitability before you buy.</p></div>
+        <div><span>02</span><p><strong>Compare categories</strong><br />One place for TVs, cooling, kitchen and laundry electronics.</p></div>
+        <div><span>03</span><p><strong>Local convenience</strong><br />Visit the Vastral Road store or call before making the trip.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">About the business</p>
+          <h2>A neighbourhood electronics retailer in Ahmedabad.</h2>
+        </div>
+        <div class="prose">
+          <p>Vimal Electronics is a small proprietorship-based electronics business in Ahmedabad. Public business listings identify the store with Vastral Road / Amraiwadi and show a product mix spanning consumer electronics and home appliances.</p>
+          <p>This website is designed to give nearby customers a simple first stop online: understand what the store sells, identify the right product category, and contact the store for up-to-date price and availability.</p>
+          <a class="text-link" href="#contact">Store details & directions <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="products">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">Product categories</p><h2>What are you looking for?</h2></div>
+          <p>Use the filters to narrow the catalogue. Exact brands, models and prices change, so the site encourages customers to contact the store for current stock.</p>
+        </div>
+
+        <div class="filter-row" role="group" aria-label="Product category filters">
+          <button class="filter active" data-filter="all" type="button">All</button>
+          <button class="filter" data-filter="entertainment" type="button">Entertainment</button>
+          <button class="filter" data-filter="cooling" type="button">Cooling</button>
+          <button class="filter" data-filter="kitchen" type="button">Kitchen</button>
+          <button class="filter" data-filter="laundry" type="button">Laundry</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+          <article class="product-card" data-category="entertainment">
+            <div class="product-icon">▣</div><span class="category-tag">Entertainment</span><h3>LED & Smart TVs</h3><p>Explore screen sizes and smart features for everyday viewing, sports and streaming.</p><button class="inquiry-button" data-product="LED & Smart TVs" type="button">Ask about TVs</button>
+          </article>
+          <article class="product-card" data-category="entertainment">
+            <div class="product-icon">♫</div><span class="category-tag">Entertainment</span><h3>Home Audio</h3><p>Sound systems and home-theatre options for movies, music and family entertainment.</p><button class="inquiry-button" data-product="Home Audio" type="button">Ask about audio</button>
+          </article>
+          <article class="product-card" data-category="cooling">
+            <div class="product-icon">❄</div><span class="category-tag">Cooling</span><h3>Air Conditioners</h3><p>Split, inverter and other cooling options for bedrooms, living rooms and offices.</p><button class="inquiry-button" data-product="Air Conditioners" type="button">Ask about ACs</button>
+          </article>
+          <article class="product-card" data-category="cooling">
+            <div class="product-icon">≋</div><span class="category-tag">Cooling</span><h3>Air Coolers</h3><p>Practical cooling choices for seasonal use and spaces where conventional AC may not fit.</p><button class="inquiry-button" data-product="Air Coolers" type="button">Ask about coolers</button>
+          </article>
+          <article class="product-card" data-category="kitchen">
+            <div class="product-icon">▥</div><span class="category-tag">Kitchen</span><h3>Refrigerators</h3><p>Single-door, double-door and larger family refrigeration categories.</p><button class="inquiry-button" data-product="Refrigerators" type="button">Ask about fridges</button>
+          </article>
+          <article class="product-card" data-category="kitchen">
+            <div class="product-icon">◫</div><span class="category-tag">Kitchen</span><h3>Microwave Ovens</h3><p>Compact microwave solutions for reheating, everyday cooking and busy households.</p><button class="inquiry-button" data-product="Microwave Ovens" type="button">Ask about microwaves</button>
+          </article>
+          <article class="product-card" data-category="laundry">
+            <div class="product-icon">◉</div><span class="category-tag">Laundry</span><h3>Washing Machines</h3><p>Top-load, front-load and semi-automatic categories for different household needs.</p><button class="inquiry-button" data-product="Washing Machines" type="button">Ask about washers</button>
+          </article>
+          <article class="product-card" data-category="entertainment">
+            <div class="product-icon">⌁</div><span class="category-tag">Electronics</span><h3>Mobiles & Accessories</h3><p>Ask the store about available mobile-phone and accessory options before visiting.</p><button class="inquiry-button" data-product="Mobiles & Accessories" type="button">Ask about mobiles</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading narrow"><div><p class="eyebrow">Website-supported customer journey</p><h2>From browsing to visiting the store.</h2></div></div>
+        <div class="service-grid">
+          <article><span>01</span><h3>Browse categories</h3><p>Understand the store's major electronics and appliance categories without needing a long catalogue.</p></article>
+          <article><span>02</span><h3>Send an enquiry</h3><p>Select a product category and create a ready-to-copy enquiry containing your name and contact number.</p></article>
+          <article><span>03</span><h3>Call for live stock</h3><p>Because electronics pricing and availability change, customers are directed to confirm before visiting.</p></article>
+          <article><span>04</span><h3>Visit the store</h3><p>Use the map link for directions to the Vastral Road / Amraiwadi location.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow light">Contact & visit</p>
+          <h2>Talk to Vimal Electronics before you buy.</h2>
+          <p class="contact-intro">For the latest price, stock and model availability, call the store directly or use the enquiry builder.</p>
+          <div class="contact-list">
+            <a href="tel:+919313691209"><span>Phone</span><strong>+91 93136 91209</strong></a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Vimal+Electronics+Bhagatbapa+Nagar+Vastral+Road+Ahmedabad" target="_blank" rel="noreferrer"><span>Address</span><strong>Bhagatbapa Nagar Society, Vastral Road, Amraiwadi, Ahmedabad 380026</strong></a>
+          </div>
+        </div>
+
+        <form class="enquiry-form" id="enquiryForm">
+          <div class="form-head"><span>Product enquiry</span><strong>Build a quick message</strong></div>
+          <label>Name<input id="customerName" type="text" placeholder="Your name" required /></label>
+          <label>Phone<input id="customerPhone" type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required /></label>
+          <label>Interested in<select id="productInterest"><option>LED & Smart TVs</option><option>Air Conditioners</option><option>Air Coolers</option><option>Refrigerators</option><option>Washing Machines</option><option>Microwave Ovens</option><option>Home Audio</option><option>Mobiles & Accessories</option><option>Other electronics</option></select></label>
+          <label>Requirement<textarea id="customerMessage" rows="3" placeholder="e.g. Looking for a 43-inch smart TV within my budget"></textarea></label>
+          <button class="button primary full" type="submit">Prepare enquiry</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div class="enquiry-modal" id="enquiryModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close enquiry">×</button>
+      <p class="eyebrow">Enquiry ready</p><h2 id="modalTitle">Your message</h2>
+      <p>This front-end prototype prepares the message for you. Copy it, then call the store to make the enquiry.</p>
+      <textarea id="preparedMessage" rows="7" readonly></textarea>
+      <div class="modal-actions"><button class="button primary" id="copyMessage" type="button">Copy message</button><a class="button secondary" href="tel:+919313691209">Call store</a></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-grid"><div><strong>Vimal Electronics</strong><p>Local electronics & home appliances · Ahmedabad</p></div><div><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></div><p class="prototype-note">Student website prototype based on publicly available business information. Current stock and pricing should be confirmed with the store.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
