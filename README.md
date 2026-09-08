@@ -1,60 +1,41 @@
-# Vimal Electronics - Local Business Website
+# Vimal Electronics - CLA Retake Web Project
 
-Responsive front-end website created for a small electronics and home-appliance retailer in Ahmedabad as part of the CLA Final Project.
+Responsive front-end website prepared for the September 2026 CLA Retake Assignment. The project presents Vimal Electronics as a local electronics and home-appliance retailer in Ahmedabad through a cleaner, more usable and responsive website.
 
-## Business
+## Improvements made
 
-Vimal Electronics is presented as a neighbourhood electronics and appliance retailer serving customers around Vastral Road / Amraiwadi, Ahmedabad. The website is designed as a digital storefront and enquiry tool rather than an e-commerce checkout system.
+- Added a responsive sticky navigation bar using CSS Flexbox.
+- Used CSS Grid and Flexbox to create structured, responsive sections for desktop, tablet and mobile screens.
+- Added the Google Font **Manrope** to improve typography and readability.
+- Improved the visual hierarchy through consistent spacing, headings, cards, buttons, borders and a navy/blue colour palette.
+- Added original inline SVG illustrations for important product categories without requiring external image files.
+- Added featured product buying guides with specification chips and practical comparison points.
+- Added a filterable product-category catalogue using JavaScript.
+- Added an interactive product-advisor tool to help visitors identify suitable product categories.
+- Added an FAQ accordion and enquiry-message builder with form validation and clipboard-copy functionality.
+- Added click-to-call, directions and mobile-friendly contact actions.
+- Improved semantic HTML structure and accessibility through labels, ARIA attributes and keyboard-friendly controls.
 
-## Website goals
+## Technologies used
 
-- Explain the business and main product categories clearly.
-- Help customers understand the features that matter before contacting the store.
-- Showcase key product categories through original inline SVG illustrations.
-- Provide product filters and an interactive product-advisor tool.
-- Make it easy to call the store, open directions and prepare a product enquiry.
-- Keep the experience responsive on desktop, tablet and mobile.
+- HTML5
+- CSS3
+- CSS Grid and Flexbox
+- Vanilla JavaScript
+- Inline SVG
+- Google Fonts
 
-## Key product guides
-
-The site contains illustrated buying guides for:
-- Smart TVs
-- Split air conditioners
-- Refrigerators
-- Washing machines
-
-These are category-level educational guides, not claims about specific models currently in stock. Current brands, model availability, specifications and prices should be confirmed directly with the store.
-
-## Features
-
-- Responsive sticky navigation
-- Custom inline SVG product illustrations
-- Featured product buying guides and specification chips
-- Filterable product-category catalogue
-- Interactive product advisor
-- FAQ accordion
-- Enquiry-message builder with input validation and clipboard copy
-- Click-to-call and Google Maps directions
-- Mobile sticky call/enquiry bar
-- Semantic HTML and accessible controls
-
-## Tools and design decisions
-
-- HTML5 for semantic structure
-- CSS3, Grid and Flexbox for responsive layout
-- Vanilla JavaScript for filters, advisor logic, FAQ, modal and enquiry form
-- Inline SVG for lightweight illustrations without external image dependencies
-- Google Font (Manrope) for modern readable typography
-- Navy, blue and soft-neutral palette to communicate trust and technology
-
-## Source repository
+## GitHub repository
 
 https://github.com/rangakartik21-star/cla-retake-web-project
 
-## Live preview
+## Main files
 
-https://raw.githack.com/rangakartik21-star/cla-retake-web-project/40b95b5095f736229e68df12ab4900159269f332/index.html
+- `index.html` - page structure and website content
+- `styles.css` - styling and responsive layout
+- `script.js` - filters, product advisor, FAQ and enquiry interactions
+- `README.md` - project summary and improvements
 
-## Note on business permission
+## Note
 
-The assignment requires owner permission to build and showcase the website. That permission should be obtained and retained by the student; the repository does not claim that permission was obtained unless confirmed separately.
+The website is designed as a digital storefront and enquiry interface rather than an e-commerce checkout system. Current brands, models, prices and availability should be confirmed directly with the store.
