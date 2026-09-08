@@ -1,66 +1,60 @@
 # Vimal Electronics - Local Business Website
 
-A responsive front-end website created for a real small electronics business in Ahmedabad as part of the September 2026 CLA final project.
+Responsive front-end website created for a small electronics and home-appliance retailer in Ahmedabad as part of the CLA Final Project.
 
 ## Business
 
-**Vimal Electronics** is a local electronics and mobile-phone retailer on Vastral Road / Amraiwadi, Ahmedabad. Public business listings show a consumer-electronics and home-appliance mix including televisions, air conditioners, refrigerators, washing machines, microwave ovens, audio systems and related electronics.
+Vimal Electronics is presented as a neighbourhood electronics and appliance retailer serving customers around Vastral Road / Amraiwadi, Ahmedabad. The website is designed as a digital storefront and enquiry tool rather than an e-commerce checkout system.
 
-## Project Objective
+## Website goals
 
-The website gives nearby customers a clean online starting point to understand major product categories, learn where the store is located, call the store for current stock and pricing, and prepare a product enquiry.
+- Explain the business and main product categories clearly.
+- Help customers understand the features that matter before contacting the store.
+- Showcase key product categories through original inline SVG illustrations.
+- Provide product filters and an interactive product-advisor tool.
+- Make it easy to call the store, open directions and prepare a product enquiry.
+- Keep the experience responsive on desktop, tablet and mobile.
 
-## Target Audience
+## Key product guides
 
-- Households in Vastral, Amraiwadi and nearby Ahmedabad areas
-- Customers comparing TVs and home appliances
-- Students and families looking for local electronics options
-- Customers who prefer speaking with a neighbourhood retailer before buying
+The site contains illustrated buying guides for:
+- Smart TVs
+- Split air conditioners
+- Refrigerators
+- Washing machines
 
-## Website Features
+These are category-level educational guides, not claims about specific models currently in stock. Current brands, model availability, specifications and prices should be confirmed directly with the store.
 
-- Responsive mobile-first navigation
-- Product-category filter
-- Product enquiry builder
-- Click-to-call store contact
-- Google Maps directions link
-- About/business-information section
-- Product-category cards for TVs, ACs, refrigerators, washing machines, microwaves, home audio and mobiles/accessories
-- Responsive desktop, tablet and mobile layouts
-- Semantic HTML and accessible form controls
+## Features
 
-## Design Decisions
+- Responsive sticky navigation
+- Custom inline SVG product illustrations
+- Featured product buying guides and specification chips
+- Filterable product-category catalogue
+- Interactive product advisor
+- FAQ accordion
+- Enquiry-message builder with input validation and clipboard copy
+- Click-to-call and Google Maps directions
+- Mobile sticky call/enquiry bar
+- Semantic HTML and accessible controls
 
-The site uses a warm off-white, deep navy and orange palette. The layout is intentionally clean and trustworthy rather than looking like a large e-commerce marketplace. Product cards focus on categories instead of publishing prices that may quickly become outdated. The store name is presented typographically; no new logo is created or claimed for the business.
+## Tools and design decisions
 
-## Tools
+- HTML5 for semantic structure
+- CSS3, Grid and Flexbox for responsive layout
+- Vanilla JavaScript for filters, advisor logic, FAQ, modal and enquiry form
+- Inline SVG for lightweight illustrations without external image dependencies
+- Google Font (Manrope) for modern readable typography
+- Navy, blue and soft-neutral palette to communicate trust and technology
 
-- HTML5
-- CSS3
-- CSS Grid and Flexbox
-- Vanilla JavaScript
-- Google Fonts (Manrope and DM Sans)
-- GitHub for source control
-- GitHub Pages branch prepared for hosting
-
-## Data / Permission Note
-
-The website prototype uses publicly available business details. Owner permission and any interview statements required by the assessment should be obtained by the student directly; this repository does not claim that such permission or interview has taken place.
-
-## Public Business Details Used
-
-- Store: Vimal Electronics
-- Location: Bhagatbapa Nagar Society / Vastral Road, Amraiwadi, Ahmedabad 380026
-- Phone: +91 93136 91209
-
-## Source Code Repository
+## Source repository
 
 https://github.com/rangakartik21-star/cla-retake-web-project
 
-## Current Live Preview
+## Live preview
 
-https://raw.githack.com/rangakartik21-star/cla-retake-web-project/1cada4b852800e085c9504f9bf2234da43e36e47/index.html
+https://raw.githack.com/rangakartik21-star/cla-retake-web-project/main/index.html
 
-## GitHub Pages URL (once Pages is enabled in repository settings)
+## Note on business permission
 
-https://rangakartik21-star.github.io/cla-retake-web-project/
+The assignment requires owner permission to build and showcase the website. That permission should be obtained and retained by the student; the repository does not claim that permission was obtained unless confirmed separately.
