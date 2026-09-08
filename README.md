@@ -31,7 +31,7 @@ The website gives nearby customers a clean online starting point to understand m
 
 ## Design Decisions
 
-The site uses a warm off-white, deep navy and orange palette. The layout is intentionally clean and trustworthy rather than looking like a large e-commerce marketplace. Product cards focus on categories instead of publishing prices that may quickly become outdated. The store name is presented typographically; no new logo is claimed for the business.
+The site uses a warm off-white, deep navy and orange palette. The layout is intentionally clean and trustworthy rather than looking like a large e-commerce marketplace. Product cards focus on categories instead of publishing prices that may quickly become outdated. The store name is presented typographically; no new logo is created or claimed for the business.
 
 ## Tools
 
@@ -41,7 +41,7 @@ The site uses a warm off-white, deep navy and orange palette. The layout is inte
 - Vanilla JavaScript
 - Google Fonts (Manrope and DM Sans)
 - GitHub for source control
-- GitHub Pages intended for hosting
+- GitHub Pages branch prepared for hosting
 
 ## Data / Permission Note
 
@@ -53,10 +53,14 @@ The website prototype uses publicly available business details. Owner permission
 - Location: Bhagatbapa Nagar Society / Vastral Road, Amraiwadi, Ahmedabad 380026
 - Phone: +91 93136 91209
 
-## Repository
+## Source Code Repository
 
 https://github.com/rangakartik21-star/cla-retake-web-project
 
-## Intended GitHub Pages URL
+## Current Live Preview
+
+https://raw.githack.com/rangakartik21-star/cla-retake-web-project/main/index.html
+
+## GitHub Pages URL (once Pages is enabled in repository settings)
 
 https://rangakartik21-star.github.io/cla-retake-web-project/
