@@ -59,7 +59,7 @@ https://github.com/rangakartik21-star/cla-retake-web-project
 
 ## Current Live Preview
 
-https://raw.githack.com/rangakartik21-star/cla-retake-web-project/main/index.html
+https://raw.githack.com/rangakartik21-star/cla-retake-web-project/1cada4b852800e085c9504f9bf2234da43e36e47/index.html
 
 ## GitHub Pages URL (once Pages is enabled in repository settings)
 
