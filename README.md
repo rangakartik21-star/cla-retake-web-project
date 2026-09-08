@@ -1,41 +1,45 @@
-# Vimal Electronics - CLA Retake Web Project
+# CLA Retake Web Projects - September 2026
 
-Responsive front-end website prepared for the September 2026 CLA Retake Assignment. The project presents Vimal Electronics as a local electronics and home-appliance retailer in Ahmedabad through a cleaner, more usable and responsive website.
+This repository contains two separate front-end projects. The original Vimal Electronics website remains at the repository root, while the personal resume website required for the CSS assignment is stored separately in the `/resume-site/` folder.
 
-## Improvements made
+## 1. Personal Resume Website - CSS Assignment
 
-- Added a responsive sticky navigation bar using CSS Flexbox.
-- Used CSS Grid and Flexbox to create structured, responsive sections for desktop, tablet and mobile screens.
-- Added the Google Font **Manrope** to improve typography and readability.
-- Improved the visual hierarchy through consistent spacing, headings, cards, buttons, borders and a navy/blue colour palette.
-- Added original inline SVG illustrations for important product categories without requiring external image files.
-- Added featured product buying guides with specification chips and practical comparison points.
-- Added a filterable product-category catalogue using JavaScript.
-- Added an interactive product-advisor tool to help visitors identify suitable product categories.
-- Added an FAQ accordion and enquiry-message builder with form validation and clipboard-copy functionality.
-- Added click-to-call, directions and mobile-friendly contact actions.
-- Improved semantic HTML structure and accessibility through labels, ARIA attributes and keyboard-friendly controls.
+Folder: `/resume-site/`
 
-## Technologies used
+This is the personal resume website updated using the CSS concepts required in the assignment.
 
-- HTML5
-- CSS3
-- CSS Grid and Flexbox
-- Vanilla JavaScript
-- Inline SVG
-- Google Fonts
+### CSS improvements applied
 
-## GitHub repository
+- Added a sticky navigation bar using CSS Flexbox.
+- Used Google Fonts (DM Serif Display and Inter) for clearer typography and visual hierarchy.
+- Applied a consistent warm-neutral colour palette with reusable CSS variables.
+- Used class, ID and element selectors to organise styles efficiently.
+- Used CSS Grid for hero, profile, education, experience and skills layouts.
+- Added feature-style resume cards, spacing, borders, shadows and hover effects.
+- Improved alignment, text formatting and section spacing.
+- Added responsive media queries for tablet and mobile screens.
+- Added smooth scrolling and section-specific positioning for easier navigation.
+
+### Resume files
+
+- `resume-site/index.html`
+- `resume-site/styles.css`
+- `resume-site/README.md`
+
+## 2. Vimal Electronics Website
+
+The earlier Vimal Electronics project remains unchanged at the repository root.
+
+### Vimal files
+
+- `index.html`
+- `styles.css`
+- `script.js`
+
+It includes responsive navigation, CSS Grid/Flexbox layouts, product cards, inline SVG illustrations, JavaScript filters, a product advisor, FAQ accordion and enquiry tools.
+
+## GitHub Repository
 
 https://github.com/rangakartik21-star/cla-retake-web-project
 
-## Main files
-
-- `index.html` - page structure and website content
-- `styles.css` - styling and responsive layout
-- `script.js` - filters, product advisor, FAQ and enquiry interactions
-- `README.md` - project summary and improvements
-
-## Note
-
-The website is designed as a digital storefront and enquiry interface rather than an e-commerce checkout system. Current brands, models, prices and availability should be confirmed directly with the store.
+For the personal resume CSS assignment, the grader should open the `/resume-site/` folder.
